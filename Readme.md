@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Андрей Косов](https://up.htmlacademy.ru/javascript/24/user/1898015).
-* Наставник: [Дмитрий Железцов](https://htmlacademy.ru/profile/id983299).
+* Наставник: [Дмитрий (sench) Железцов](https://htmlacademy.ru/profile/id983299).
 
 ---
 
