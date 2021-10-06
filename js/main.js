@@ -8,8 +8,8 @@ function getRandomInt(min, max) {
 }
 const getRandomCoordinate = function(min, max, decimals) {
     if (min >= 0 && max > min) {
-        let coordinates = Math.random() * (max - min + 1) + min;
-        return coordinates.toFixed(decimals);
+        let num = Math.random() * (max - min + 1) + min;
+        return num.toFixed(decimals);
     }
     return 'Ввели не верный значения';
 };
