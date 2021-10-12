@@ -16,7 +16,7 @@ const getRandomCoordinate = (min, max, decimals) => {
 };
 
 const getAvatar = () => {
-  const number = getRandomInt(1, 10)
+  const number = getRandomInt(1, 10);
   if (number >= 10) {
     return "img/avatars/user" + "0" + number + ".png";
   }
