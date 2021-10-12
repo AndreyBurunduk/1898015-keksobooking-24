@@ -53,10 +53,6 @@ const FEATURES = [
   'conditioner',
 ]; //features, массив строк — массив случайной длины из значений: wifi, dishwasher, parking, washer, elevator, conditioner. Значения не должны повторяться.
 
-const DESCRIPTION = [
-  'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
-]; //description, строка — описание помещения. Придумайте самостоятельно.
-
 const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
@@ -67,38 +63,32 @@ const getRandomElement = (elements) => {
   return elements[_.random(0, elements.length - 1)];
 };
 
-const getOffer = () => {
-  return {
-    title: getRandomElement(TITLE),
-    price: getRandomInt(1000, 10000),
-    address: getAddress(),
-    type: getRandomElement(TYPE),
-    rooms: getRandomInt(1, 5),
-    quests: getRandomInt(1, 5),
-    checkin: getRandomElement(CHECKIN),
-    checkout: getRandomElement(CHECKOUT),
-    features: getRandomElement(FEATURES),
-    description: getRandomElement(DESCRIPTION),
-    photos: getRandomElement(PHOTOS),
-  };
-};
- //lat, число с плавающей точкой — широта, случайное значение от 35.65000 до 35.70000.
- //lng, число с плавающей точкой — долгота, случайное значение от 139.70000 до 139.80000.
+const COUNT_ELEMENT= 10;
 
-const getLocation = () => {
+const createWizard = () => {
   const location = {
     lat: getRandomElement(35.65, 35.7, 5),
     lng: getRandomElement(139.7, 139.8, 5),
-  }
-};
-
-const SIMILAR_WIZARD_COUNT = 10;
-
-const createWizard = () => {
+  };
   return {
-    author: getAvatar(),
-    offer: getOffer(),
-    location,
+    author: {
+      avatar: getAvatar(),
+    },
+    offer: {
+      title: getRandomElement(TITLE),
+      price: getRandomInt(1000, 10000),
+      address: "${location.lat}, ${location.lng}",
+      type: getRandomElement(TYPE),
+      rooms: getRandomInt(1, 5),
+      quests: getRandomInt(1, 5),
+      checkin: getRandomElement(CHECKIN),
+      checkout: getRandomElement(CHECKOUT),
+      features: getRandomElement(FEATURES),
+      description:
+        "В художественном произведении интерьер не просто показывает условия жизни персонажей...",
+      photos: getRandomElement(PHOTOS),
+      location,
+    },
   };
 };
 
