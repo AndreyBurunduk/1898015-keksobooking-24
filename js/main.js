@@ -16,11 +16,8 @@ const getRandomCoordinate = (min, max, decimals) => {
 };
 
 const getAvatar = () => {
-  const number = getRandomInt(1, 10);
-  if (number >= 10) {
-    return 'img/avatars/user' + '0' + number + '.png';
-  }
-  return 'img/avatars/user' + number + '.png';
+  const randomNumber = '0${getRandomInt(1, 10)}'.slice(-2);
+  return 'img/avatars/user' + randomNumber + '.png';
 }; //avatar, строка — адрес изображения вида img/avatars/user{{xx}}.png, где {{xx}} — это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
 
 const TITLE = [
@@ -85,16 +82,14 @@ const getOffer = () => {
     photos: getRandomElement(PHOTOS),
   };
 };
-
-const Lat = getRandomCoordinate(35.65, 35.7, 5); //lat, число с плавающей точкой — широта, случайное значение от 35.65000 до 35.70000.
-
-const Lng = getRandomCoordinate(139.7, 139.8, 5); //lng, число с плавающей точкой — долгота, случайное значение от 139.70000 до 139.80000.
+ //lat, число с плавающей точкой — широта, случайное значение от 35.65000 до 35.70000.
+ //lng, число с плавающей точкой — долгота, случайное значение от 139.70000 до 139.80000.
 
 const getLocation = () => {
-  return {
-    lat: getRandomElement(Lat),
-    lng: getRandomElement(Lng),
-  };
+  const location = {
+    lat: getRandomElement(35.65, 35.7, 5),
+    lng: getRandomElement(139.7, 139.8, 5),
+  }
 };
 
 const SIMILAR_WIZARD_COUNT = 10;
@@ -103,7 +98,7 @@ const createWizard = () => {
   return {
     author: getAvatar(),
     offer: getOffer(),
-    location: getLocation(),
+    location,
   };
 };
 
