@@ -71,7 +71,7 @@ const createWizard = () => {
     offer: {
       title: getRandomElement(TITLE),
       price: getRandomInt(1000, 10000),
-      address: '${location.lat}, ${location.lng}',
+      address: `${location.lat}, ${location.lng}`,
       type: getRandomElement(TYPE),
       rooms: getRandomInt(1, 5),
       quests: getRandomInt(1, 5),
@@ -79,11 +79,12 @@ const createWizard = () => {
       checkout: getRandomElement(CHECKOUT),
       features: getRandomElement(FEATURES),
       description:
-        'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
+        "В художественном произведении интерьер не просто показывает условия жизни персонажей...",
       photos: getRandomElement(PHOTOS),
       location,
     },
   };
 };
 
-const similarWizards = Array.from({ length: COUNT_ELEMENT }, createWizard);
+const similarWizards = Array.from({ length: COUNT_ELEMENT }, createWizard);//Array.from({ length: 5 }, (v, k) => k);
+console.log(similarWizards);
