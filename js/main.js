@@ -79,7 +79,7 @@ const createWizard = () => {
       checkout: getRandomElement(CHECKOUT),
       features: getRandomElement(FEATURES),
       description:
-        "В художественном произведении интерьер не просто показывает условия жизни персонажей...",
+        'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
       photos: getRandomElement(PHOTOS),
       location,
     },
