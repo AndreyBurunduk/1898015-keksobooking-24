@@ -86,5 +86,5 @@ const createWizard = () => {
   };
 };
 
-const similarWizards = Array.from({ length: COUNT_ELEMENT }, createWizard);//Array.from({ length: 5 }, (v, k) => k);
-console.log(similarWizards);
+const similarWizards = Array.from({ length: COUNT_ELEMENT }, createWizard);
+
