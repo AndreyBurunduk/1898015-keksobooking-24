@@ -32,12 +32,6 @@ const TITLE = [
   'Надежный приют',
 ]; //title, строка — заголовок предложения. Придумайте самостоятельно.
 
-const getAddress = () => {
-  return {
-    location: getLocation(),
-  };
-}; //address, строка — адрес предложения. Для простоты пусть пока составляется из географических координат по маске {{location.lat}}, {{location.lng}}.
-
 const TYPE = ['palace', 'flat', 'house', 'bungalow', 'hotel']; //type, строка — одно из пяти фиксированных значений: palace, flat, house, bungalow или hotel.
 
 const CHECKIN = ['12:00', '13:00', '14:00']; //checkin, строка — одно из трёх фиксированных значений: 12:00, 13:00 или 14:00.
@@ -67,8 +61,8 @@ const COUNT_ELEMENT= 10;
 
 const createWizard = () => {
   const location = {
-    lat: getRandomElement(35.65, 35.7, 5),
-    lng: getRandomElement(139.7, 139.8, 5),
+    lat: getRandomCoordinate(35.65, 35.7, 5),
+    lng: getRandomCoordinate(139.7, 139.8, 5),
   };
   return {
     author: {
@@ -92,7 +86,4 @@ const createWizard = () => {
   };
 };
 
-const similarWizards = Array.from(
-  { length: SIMILAR_WIZARD_COUNT },
-  createWizard
-);
+const similarWizards = Array.from({ length: COUNT_ELEMENT }, createWizard);
