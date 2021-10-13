@@ -17,7 +17,7 @@ const getRandomCoordinate = (min, max, decimals) => {
 
 const getAvatar = () => {
   const randomNumber = '0${getRandomInt(1, 10)}'.slice(-2);
-  return 'img/avatars/user' + randomNumber + '.png';
+  return 'img/avatars/user${randomNumber}.png';
 }; //avatar, строка — адрес изображения вида img/avatars/user{{xx}}.png, где {{xx}} — это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
 
 const TITLE = [
@@ -71,7 +71,7 @@ const createWizard = () => {
     offer: {
       title: getRandomElement(TITLE),
       price: getRandomInt(1000, 10000),
-      address: "${location.lat}, ${location.lng}",
+      address: '${location.lat}, ${location.lng}',
       type: getRandomElement(TYPE),
       rooms: getRandomInt(1, 5),
       quests: getRandomInt(1, 5),
@@ -79,7 +79,7 @@ const createWizard = () => {
       checkout: getRandomElement(CHECKOUT),
       features: getRandomElement(FEATURES),
       description:
-        "В художественном произведении интерьер не просто показывает условия жизни персонажей...",
+        'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
       photos: getRandomElement(PHOTOS),
       location,
     },
