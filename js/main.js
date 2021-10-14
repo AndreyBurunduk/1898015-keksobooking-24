@@ -84,6 +84,6 @@ const createObject = () => {
   };
 };
 
-const similarObject = Array.from({ length: COUNT_ELEMENT }, createObject);
+Array.from({ length: COUNT_ELEMENT }, createObject);
 
-similarObject();
+
