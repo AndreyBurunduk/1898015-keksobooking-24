@@ -58,32 +58,29 @@ const getRandomElement = (elements) => {
 
 const COUNT_ELEMENT = 10;
 
-const createObject = () => {
-  const location = {
+const createObject = () => ({
+  author: {
+    avatar: getAvatar(),
+  },
+  offer: {
+    title: getRandomElement(TITLES),
+    price: getRandomInt(1000, 10000),
+    address: `${location.lat}, ${location.lng}`,
+    type: getRandomElement(TYPES),
+    rooms: getRandomInt(1, 5),
+    quests: getRandomInt(1, 5),
+    checkin: getRandomElement(HOURS),
+    checkout: getRandomElement(HOURS),
+    features: getRandomElement(FEATURES),
+    description:
+      'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
+    photos: getRandomElement(PHOTOS),
+  },
+  location: {
     lat: getRandomCoordinate(35.65, 35.7, 5),
     lng: getRandomCoordinate(139.7, 139.8, 5),
-  };
-  return {
-    author: {
-      avatar: getAvatar(),
-    },
-    offer: {
-      title: getRandomElement(TITLES),
-      price: getRandomInt(1000, 10000),
-      address: `${location.lat}, ${location.lng}`,
-      type: getRandomElement(TYPES),
-      rooms: getRandomInt(1, 5),
-      quests: getRandomInt(1, 5),
-      checkin: getRandomElement(HOURS),
-      checkout: getRandomElement(HOURS),
-      features: getRandomElement(FEATURES),
-      description:
-        'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
-      photos: getRandomElement(PHOTOS),
-    },
-  };
-};
+  },
+});
 
 Array.from({ length: COUNT_ELEMENT }, createObject);
-
 
