@@ -80,7 +80,6 @@ const createObject = () => {
       description:
         'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
       photos: getRandomElement(PHOTOS),
-      location,
     },
   };
 };
