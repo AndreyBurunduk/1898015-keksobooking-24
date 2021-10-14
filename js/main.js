@@ -15,12 +15,7 @@ const getRandomCoordinate = (min, max, decimals) => {
   return 'Ввели не верный значения';
 };
 
-const getAvatar = () => {
-  const randomNumber = `0${getRandomInt(1, 10)}`.slice(-2);
-  return `img/avatars/user${randomNumber}.png`;
-}; //avatar, строка — адрес изображения вида img/avatars/user{{xx}}.png, где {{xx}} — это число от 1 до 10. Перед однозначными числами ставится 0. Например, 01, 02...10. Адреса изображений не повторяются.
-
-const TITLE = [
+const TITLES = [
   'Световая симфония',
   'Карнавал текстур и красок',
   'Девичье гнездышко',
@@ -32,11 +27,9 @@ const TITLE = [
   'Надежный приют',
 ]; //title, строка — заголовок предложения. Придумайте самостоятельно.
 
-const TYPE = ['palace', 'flat', 'house', 'bungalow', 'hotel']; //type, строка — одно из пяти фиксированных значений: palace, flat, house, bungalow или hotel.
+const TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel']; //type, строка — одно из пяти фиксированных значений: palace, flat, house, bungalow или hotel.
 
-const CHECKIN = ['12:00', '13:00', '14:00']; //checkin, строка — одно из трёх фиксированных значений: 12:00, 13:00 или 14:00.
-
-const CHECKOUT = ['12:00', '13:00', '14:00']; //checkout, строка — одно из трёх фиксированных значений: 12:00, 13:00 или 14:00.
+const HOURS = ['12:00', '13:00', '14:00']; //checkin, строка — одно из трёх фиксированных значений: 12:00, 13:00 или 14:00.
 
 const FEATURES = [
   'wifi',
@@ -53,11 +46,19 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.',
 ]; //photos, массив строк — массив случайной длины из значений:
 
-const getRandomElement = (elements) => {return elements[_.random(0, elements.length - 1)];};
+const getAvatar = () => {
+  const randomNumber = `0${getRandomInt(1, 10)}`.slice(-2);
+  return `img/avatars/user${randomNumber}.png`;
+};
 
-const COUNT_ELEMENT= 10;
+const getRandomElement = (elements) => {
+  const arr = Math.floor(Math.random()*elements.length);
+  return elements[arr];
+};
 
-const createWizard = () => {
+const COUNT_ELEMENT = 10;
+
+const createObject = () => {
   const location = {
     lat: getRandomCoordinate(35.65, 35.7, 5),
     lng: getRandomCoordinate(139.7, 139.8, 5),
@@ -67,14 +68,14 @@ const createWizard = () => {
       avatar: getAvatar(),
     },
     offer: {
-      title: getRandomElement(TITLE),
+      title: getRandomElement(TITLES),
       price: getRandomInt(1000, 10000),
       address: `${location.lat}, ${location.lng}`,
-      type: getRandomElement(TYPE),
+      type: getRandomElement(TYPES),
       rooms: getRandomInt(1, 5),
       quests: getRandomInt(1, 5),
-      checkin: getRandomElement(CHECKIN),
-      checkout: getRandomElement(CHECKOUT),
+      checkin: getRandomElement(HOURS),
+      checkout: getRandomElement(HOURS),
       features: getRandomElement(FEATURES),
       description:
         'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
@@ -84,6 +85,6 @@ const createWizard = () => {
   };
 };
 
-const similarWizards = Array.from({ length: COUNT_ELEMENT }, createWizard);
+const similarObject = Array.from({ length: COUNT_ELEMENT }, createObject);
 
-console.log(similarWizards);
+similarObject();
