@@ -29,6 +29,4 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.',
 ]; //photos, массив строк — массив случайной длины из значений:
 
-const COUNT_ELEMENT = 10;
-
 export { TITLES, TYPES, HOURS, FEATURES, PHOTOS, COUNT_ELEMENT };

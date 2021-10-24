@@ -1,5 +1,5 @@
 import { getRandomInt, getRandomCoordinate } from './utils/util.js';
-import { TITLES, TYPES, HOURS, FEATURES, PHOTOS, COUNT_ELEMENT } from './loading.js';
+import { TITLES, TYPES, HOURS, FEATURES, PHOTOS } from './loading.js';
 
 const getAvatar = () => {
   const randomNumber = `0${getRandomInt(1, 10)}`.slice(-2);
@@ -35,4 +35,4 @@ const createObject = () => ({
   },
 });
 
-export { COUNT_ELEMENT, createObject };
+export {createObject };
