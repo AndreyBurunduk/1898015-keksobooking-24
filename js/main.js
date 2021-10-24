@@ -18,4 +18,4 @@ const loadingData = generatingObject;
 loadingData.forEach(() =>{
   const clonCardPattern = cardPattern.cloneNode(true);
   placeToInsert.appendChild(clonCardPattern);
-})
+});
