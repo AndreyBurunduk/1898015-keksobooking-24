@@ -9,7 +9,7 @@ const cardPattern = document.querySelector('#card').content.querySelector('.popu
 //placeToInsert.appendChild(clonCardPattern);
 
 //подгружаем данные(генерируем)
-const loadingData = generatingObject;
+const loadingData = generatingObject();
 //вставка клонов
 
 loadingData.forEach(() =>{
