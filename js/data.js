@@ -39,7 +39,7 @@ const COUNT_ELEMENT = 4;
 
 const generatingObject = () =>
   Array.from({ length: COUNT_ELEMENT }, createObject);
-//
+
 //Array.from({ length: COUNT_ELEMENT }, createObject);
 
 export { generatingObject };
