@@ -23,10 +23,15 @@ const FEATURES = [
   'conditioner',
 ]; //features, массив строк — массив случайной длины из значений: wifi, dishwasher, parking, washer, elevator, conditioner. Значения не должны повторяться.
 
+const DESCRIPTION = [
+  'Eсть вcё нeобхoдимое для кoмфортнoго пpoживания. Шикарный панорамный вид с балкона.',
+  'Для вашего удобства апартаменты оснащены современной мебелью и бытовой техникой. ',
+];
+
 const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.',
 ]; //photos, массив строк — массив случайной длины из значений:
 
-export { TITLES, TYPES, HOURS, FEATURES, PHOTOS};
+export { TITLES, TYPES, HOURS, FEATURES, DESCRIPTION, PHOTOS};
