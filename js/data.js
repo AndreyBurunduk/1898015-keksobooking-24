@@ -1,9 +1,9 @@
 import { getRandomInt, getRandomCoordinate } from './utils/util.js';
 import { TITLES, TYPES, HOURS, FEATURES, PHOTOS, DESCRIPTION } from './loading.js';
 
-const getAvatar = () => {
+const getAuthor = () => {
   const randomNumber = `0${getRandomInt(1, 10)}`.slice(-2);
-  return {avatar: `img/avatars/user${randomNumber}.png`};
+  return { avatar: `img/avatars/user${randomNumber}.png` };
 };
 
 const getRandomElement = (elements) => {
@@ -31,13 +31,12 @@ const  getOffer = () => ({
 });
 
 const createObj = () => ({
-  author: getAvatar(),
+  author: getAuthor(),
   offer: getOffer(),
   location: getRandomLocation(),
 });
 
 //модуль генерации данных рандома
-const generatingObject = (COUNT_ELEMENT) =>
-  Array.from({ length: COUNT_ELEMENT }, createObj);
-
-export { generatingObject};
+export const genObjAds = function (COUNT_ELEMENT) {
+  return new Array(COUNT_ELEMENT).fill('').map(() => (createObj()));
+};
