@@ -1,5 +1,5 @@
-import {generatingObject} from './data.js';
 
-//подгружаем данные(генерируем)
-const loadingData = generatingObject(1);
-window.console.log(loadingData);
+import { creatArrElement } from './card.js';
+const index = 7;
+creatArrElement(index);
+

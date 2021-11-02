@@ -15,6 +15,36 @@ const getRandomCoordinate = (min, max, decimals) => {
   }
   return 'Ввели не верный значения';
 };
+//функция возращает рандомный элемент из массива
+const getRandomElement = (elements) => {
+  const arr = Math.floor(Math.random() * elements.length);
+  return elements[arr];
+};
+//рандом число для картинки
+const randomNumber = () => {
+  const id = getRandomInt(1, 10);
+  if (id <10)
+  {return (`0${id}`);
+  } else {
+    (`${id}`);
+  }
+};
+//рандом массив
+function getArray(features) {
+  const maxLength = features.length;
+  const lengthOfArray = getRandomInt(1, maxLength);
+  const array = [];
+
+  while (array.length < lengthOfArray) {
+    const indexOfEl = getRandomInt(0, maxLength - 1);
+    const el = features[indexOfEl];
+
+    if (!array.includes(el)) {
+      array.push(el);
+    }
+  }
+  return array;
+}
 //////////////////////////////////////////////
 // Функция взята из интернета и доработана
 // Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
@@ -70,4 +100,4 @@ function getRandomPositiveFloat(abc, bcd, digits = 1) {
 }
 getRandomPositiveFloat();
 
-export { getRandomInt, getRandomCoordinate };
+export { getRandomInt, getRandomCoordinate, getRandomElement, randomNumber, getArray };
