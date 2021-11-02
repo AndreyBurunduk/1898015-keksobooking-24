@@ -1,19 +1,10 @@
-import { getRandomInt, getRandomCoordinate } from './utils/util.js';
-import { TITLES, TYPES, HOURS, FEATURES, PHOTOS, COUNT_ELEMENT } from './loading.js';
+import { getRandomInt, getRandomCoordinate, getRandomElement, randomNumber, getArray } from './utils/util.js';
+import { TITLES, TYPES, HOURS, FEATURES, PHOTOS, DESCRIPTION } from './loading.js';
 
-const getAvatar = () => {
-  const randomNumber = `0${getRandomInt(1, 10)}`.slice(-2);
-  return `img/avatars/user${randomNumber}.png`;
-};
-
-const getRandomElement = (elements) => {
-  const arr = Math.floor(Math.random() * elements.length);
-  return elements[arr];
-};
-
+//создание объекта
 const createObject = () => ({
   author: {
-    avatar: getAvatar(),
+    avatar: `img/avatars/user${randomNumber()}.png`,
   },
   offer: {
     title: getRandomElement(TITLES),
@@ -24,10 +15,9 @@ const createObject = () => ({
     quests: getRandomInt(1, 5),
     checkin: getRandomElement(HOURS),
     checkout: getRandomElement(HOURS),
-    features: getRandomElement(FEATURES),
-    description:
-      'В художественном произведении интерьер не просто показывает условия жизни персонажей...',
-    photos: getRandomElement(PHOTOS),
+    features: getArray(FEATURES),
+    description: getRandomElement(DESCRIPTION),
+    photos: getArray(PHOTOS),
   },
   location: {
     lat: getRandomCoordinate(35.65, 35.7, 5),
@@ -35,4 +25,5 @@ const createObject = () => ({
   },
 });
 
-export { COUNT_ELEMENT, createObject };
+export const getArrElement = (COUNT_ELEMENT = 1) =>
+  Array.from({ length: COUNT_ELEMENT }, createObject);

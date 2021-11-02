@@ -1,5 +1,5 @@
-import { COUNT_ELEMENT, createObject } from './data.js';
 
-Array.from({ length: COUNT_ELEMENT }, createObject);
-
+import { creatArrElement } from './card.js';
+const index = 7;
+creatArrElement(index);
 
