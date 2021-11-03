@@ -25,17 +25,15 @@ const getClonePhotos = (photos, clonePhotos, clonePhoto) => {
     clonePhotos.append(photo);
   });
 };
-//
-
 //куда вставим шаблон
 const insertTemplate = document.querySelector('#map-canvas');
 //находим шаблон
 const searchTemplate = document.querySelector('#card').content.querySelector('.popup');
 
 export const creatArrElement =(index) => {
-//генератор наполнения
+  //генератор наполнения
   const dataUsers = getArrElement(index);
-//запуск наполнеия
+  //запуск наполнеия
   dataUsers.forEach((element) => {
     const {
       author,
