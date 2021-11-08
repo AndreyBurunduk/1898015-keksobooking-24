@@ -1,6 +1,9 @@
 import { pageForm } from './page-State.js';
+
+
 const MIN_TITLE = 30;
 const MAX_TITLE = 100;
+
 const MIN_PRICE = {
   bungalow: 0,
   flat: 1000,
@@ -8,6 +11,7 @@ const MIN_PRICE = {
   house: 5000,
   palace: 10000,
 };
+
 const form = document.querySelector('.ad-form');
 const adTitle = form.querySelector('#title');
 const adPrice = form.querySelector('#price');
