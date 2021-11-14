@@ -1,42 +1,4 @@
 
-//функция генерирует случайные числа с указанием количество знаков после запятойс проверкой на вводимые значения
-const getRandomInt = (min, max, decimals = 0) => {
-  if (min >= 0 && max > min) {
-    const num = Math.random() * (max - min + 1) + min;
-    return num.toFixed(decimals);
-  }
-  return 'Ввели не верный значения';
-};
-//функция возращает рандомный элемент из массива
-const getRandomElement = (elements) => {
-  const arr = Math.floor(Math.random() * elements.length);
-  return elements[arr];
-};
-//рандом число для картинки
-const randomNumber = () => {
-  const id = getRandomInt(1, 10);
-  if (id <10)
-  {return (`0${id}`);
-  } else {
-    (`${id}`);
-  }
-};
-//рандом массив
-function getArray(features) {
-  const maxLength = features.length;
-  const lengthOfArray = getRandomInt(1, maxLength);
-  const array = [];
-
-  while (array.length < lengthOfArray) {
-    const indexOfEl = getRandomInt(0, maxLength - 1);
-    const el = features[indexOfEl];
-
-    if (!array.includes(el)) {
-      array.push(el);
-    }
-  }
-  return array;
-}
 function debounce(callback, timeoutDelay = 500) {
   let timeoutId;
   return (...rest) => {
