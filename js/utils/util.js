@@ -33,4 +33,4 @@ const showErrorMsg = (message) => {
     container.remove();
   }, SHOW_ERROR_TIME);
 };
-export {showErrorMsg, debounce,  };
+export {showErrorMsg, debounce };
