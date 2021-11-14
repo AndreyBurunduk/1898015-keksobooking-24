@@ -16,7 +16,13 @@
     "eslint-config-htmlacademy": "4.1.0"
   },
   "license": "MIT",
+<<<<<<< HEAD
   "dependencies": {},
+=======
+  "dependencies": {
+    "eslint-config-airbnb": "18.2.1"
+  },
+>>>>>>> module10-task1
   "scripts": {
     "start": "browser-sync start --server --no-ui --files \"js/**/*.js\"",
     "test": "eslint js/"
