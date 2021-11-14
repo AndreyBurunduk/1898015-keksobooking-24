@@ -1,14 +1,6 @@
-//функция генерирует случайные целые числа с проверкой на вводимые значения
-const getRandomInt = (min, max) => {
-  if (min >= 0 && max > min) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-  return 'Ввели не верный значения';
-};
+
 //функция генерирует случайные числа с указанием количество знаков после запятойс проверкой на вводимые значения
-const getRandomCoordinate = (min, max, decimals) => {
+const getRandomInt = (min, max, decimals = 0) => {
   if (min >= 0 && max > min) {
     const num = Math.random() * (max - min + 1) + min;
     return num.toFixed(decimals);
@@ -45,41 +37,42 @@ function getArray(features) {
   }
   return array;
 }
-//////////////////////////////////////////////
-// Функция взята из интернета и доработана
-// Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
-
-function getRandomPositiveInteger(abc, bcd) {
-  // Чтобы не заставлять пользователя нашей функции помнить порядок аргументов,
-  // реализуем поддержку передачи минимального и максимального значения в любом порядке,
-  // а какое из них большее и меньшее вычислим с помощью Math.min и Math.max.
-
-  // После нам нужно убедиться, что пользователь не передал дробные значения,
-  // для этого на всякий пожарный случай нижнюю границу диапазона
-  // мы округляем к ближайшему большему целому с помощью Math.ceil,
-  // а верхнюю границу - к ближайшему меньшему целому с помощью Math.floor
-  const lower = Math.ceil(Math.min(Math.abs(abc), Math.abs(bcd)));
-  const upper = Math.floor(Math.max(Math.abs(abc), Math.abs(bcd)));
-  // Обратите внимание, чтобы учесть условие, что диапазон может быть [0, ∞),
-  // мы не ругаем пользователя за переданное отрицательное число,
-  // а просто берём его по модулю с помощью Math.abs
-
-  // Дальше используем Math.random() для получения случайного дробного числа в диапазоне [0, 1),
-  // которое домножаем на разницу между переданными числами плюс единица - это будет наша случайная дельта.
-  // После нужно сложить дельту с минимальным значением, чтобы получить итоговое случайное число.
-  const result = Math.random() * (upper - lower + 1) + lower;
-  // "Плюс единица", чтобы включить верхнюю границу диапазона в случайные числа
-
-  // И в конце с помощью метода Math.floor мы округляем полученный результат,
-  // потому что Math.random() генерирует только дробные числа и ноль.
-  return Math.floor(result);
+function debounce(callback, timeoutDelay = 500) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
 }
-getRandomPositiveInteger();
+const showErrorMsg = (message) => {
+  const container = document.createElement('div');
+  const SHOW_ERROR_TIME = 3000;
 
-// Функция взята из интернета и доработана
-// Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
+  container.style.zIndex = 999;
+  container.style.position = 'fixed';
+  container.style.left = 0;
+  container.style.top = '10px';
+  container.style.right = 0;
+  container.style.margin = '0 auto';
+  container.style.paddingTop = '20px';
+  container.style.height = '80px';
+  container.style.maxWidth = '600px';
+  container.style.border = '4px solid red';
+  container.style.borderRadius = '20px';
+  container.style.fontSize = '30px';
+  container.style.textAlign = 'center';
+  container.style.backgroundColor = 'red';
+  container.style.color = 'white';
+  container.textContent = message;
 
-function getRandomPositiveFloat(abc, bcd, digits = 1) {
+  document.body.append(container);
+
+  setTimeout(() => {
+    container.remove();
+  }, SHOW_ERROR_TIME);
+};
+
+function getRandomPositiveFloat(abc, bcd, digits = 0) {
   // Чтобы не заставлять пользователя нашей функции помнить порядок аргументов,
   // реализуем поддержку передачи минимального и максимального значения в любом порядке,
   // а какое из них большее и меньшее вычислим с помощью Math.min и Math.max
@@ -100,4 +93,4 @@ function getRandomPositiveFloat(abc, bcd, digits = 1) {
 }
 getRandomPositiveFloat();
 
-export { getRandomInt, getRandomCoordinate, getRandomElement, randomNumber, getArray };
+export { getRandomInt, showErrorMsg, getRandomElement, randomNumber, debounce, getArray };
