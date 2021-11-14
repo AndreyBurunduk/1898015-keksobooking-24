@@ -14,12 +14,12 @@ const isEscKey = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 const renderMessage = (node) => {
   const onClose = () => {
     node.remove();
-    document.removeEventListener('keydown');
   };
 
   function onDocumentKeyDown(evt) {
     if (isEscKey(evt)) {
       onClose();
+      document.removeEventListener('keydown', onDocumentKeyDown);
     }
   }
 
