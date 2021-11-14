@@ -1,8 +1,6 @@
-import { pageForm } from './page-State.js';
-
-
 const MIN_TITLE = 30;
 const MAX_TITLE = 100;
+const MAX_PRICE = 1000000;
 
 const MIN_PRICE = {
   bungalow: 0,
@@ -17,12 +15,11 @@ const adTitle = form.querySelector('#title');
 const adPrice = form.querySelector('#price');
 const adRoomNum = form.querySelector('#room_number');
 const adCapacity = form.querySelector('#capacity');
-const typeValue = form.querySelector('#type');
+const adType = form.querySelector('#type');
 const adTimeIn = form.querySelector('#timein');
 const adTimeOut = form.querySelector('#timeout');
-
-//валидация заголовка
-adTitle.addEventListener('input', () => {
+const onTitleInput = () => {
+  //валидация заголовка
   const value = adTitle.value.length;
   if (value < MIN_TITLE) {
     adTitle.setCustomValidity(`Ещё ${MIN_TITLE - value} симв.`);
@@ -32,40 +29,77 @@ adTitle.addEventListener('input', () => {
     adTitle.setCustomValidity('');
   }
   adTitle.reportValidity();
-});
-// соотношение комна с гостями
-adRoomNum.addEventListener('change', (evt) => {
-  const index = evt.target.value === '100' ? '0' : evt.target.value;
-  for (let i = 0; i < adCapacity.length; i++) {
-    adCapacity[i].disabled = true;
-    if (adCapacity[i].value === index) {
-      adCapacity[i].disabled = false;
-    }
-    if (adCapacity[i].value <= index && adCapacity[i].value > 0) {
-      adCapacity[i].disabled = false;
-    }
+};
+
+const changeMinPrice = () => {
+  adPrice.min = MIN_PRICE[adType.value];
+  adPrice.placeholder = MIN_PRICE[adType.value];
+};
+
+const onChangePrice = () => changeMinPrice();
+
+const onPriceInput = (evt) => {
+  const value = evt.target.value;
+  const typeValue = MIN_PRICE[adType.value];
+
+  if (value < typeValue) {
+    adPrice.setCustomValidity(`Минимальная цена ${typeValue}`);
+  } else if (value > MAX_PRICE) {
+    adPrice.setCustomValidity(`Максимальная цена ${MAX_PRICE}`);
+  } else {
+    adPrice.setCustomValidity('');
   }
-});
-// Валидация цены за ночь по типу жилья
-typeValue.addEventListener('change', (evt) => {
-  const minPrice = MIN_PRICE[evt.target.value];
-  adPrice.min = minPrice;
-  adPrice.placeholder = minPrice.toString();
-});
+  adPrice.reportValidity();
+};
 
-// Синхронизация времени заезда и выезда
-adTimeIn.addEventListener('change', (evt) => {
-  adTimeOut.value = evt.target.value;
-});
-adTimeOut.addEventListener('change', (evt) => {
-  adTimeIn.value = evt.target.value;
-});
+const checkCapacity = () => {
+  const rooms = Number(adRoomNum.value);
+  const guests = Number(adCapacity.value);
 
-export const setFormSend = () => {
-  form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const formData = new FormData(evt.target);
-    formData;
-    pageForm(false);
-  });
+  if (rooms < guests) {
+    adCapacity.setCustomValidity('Выберите другой вариант');
+  } else if (rooms === MAX_TITLE  && guests !== 0) {
+    adCapacity.setCustomValidity('Выберите другой вариант');
+  } else if (guests === 0 && rooms !== MAX_TITLE ) {
+    adCapacity.setCustomValidity('Выберите другой вариант');
+  } else {
+    adCapacity.setCustomValidity('');
+  }
+  adCapacity.reportValidity();
+};
+
+const onChangeTimeIn = () => adTimeOut.value = adTimeIn.value;
+const onChangeTimeOut = () => adTimeIn.value = adTimeOut.value;
+
+const syncTime = () => {
+  onChangeTimeIn();
+  onChangeTimeOut();
+};
+
+const onChangeCapacity = () => checkCapacity();
+
+const syncFields = () => {
+  changeMinPrice();
+  syncTime();
+};
+
+const validateForm = () => {
+  syncFields();
+
+  adTitle.addEventListener('input', onTitleInput);
+
+  adType.addEventListener('change', onChangePrice);
+  adPrice.addEventListener('change', onPriceInput);
+
+  adRoomNum.addEventListener('change', onChangeCapacity);
+  adCapacity.addEventListener('change', onChangeCapacity);
+
+  adTimeIn.addEventListener('change', onChangeTimeIn);
+  adTimeOut.addEventListener('change', onChangeTimeOut);
+};
+
+export {
+  changeMinPrice,
+  checkCapacity,
+  validateForm
 };
