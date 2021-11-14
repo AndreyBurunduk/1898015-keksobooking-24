@@ -11,7 +11,7 @@ const resetBtn = adForm.querySelector('.ad-form__reset');
 
 const isEscKey = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
-const renderMessage = (node) => {
+const addCloseListeners = (node) => {
   const onClose = () => {
     node.remove();
   };
@@ -43,13 +43,13 @@ const resetForms = () => {
 const showSuccessMsg = () => {
   const success = successMsgTemplate.cloneNode(true);
   document.body.appendChild(success);
-  renderMessage(success);
+  addCloseListeners(success);
 };
 
 const showErrorMsg = () => {
   const error = errorMsgTemplate.cloneNode(true);
   document.body.appendChild(error);
-  renderMessage(error);
+  addCloseListeners(error);
 };
 
 const onSendSuccess = () => {
