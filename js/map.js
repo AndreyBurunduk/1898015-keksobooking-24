@@ -9,7 +9,6 @@ const MAPPOSITION = {
   LNG: 139.753137.toFixed(5),
   ZOOM: 13,
 };
-
 const MainIcon = {
   WIDTH: 52,
   HEIGHT: 52,
