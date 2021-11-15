@@ -37,13 +37,7 @@ function getArray(features) {
   }
   return array;
 }
-function debounce(callback, timeoutDelay = 500) {
-  let timeoutId;
-  return (...rest) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
-  };
-}
+
 const showErrorMsg = (message) => {
   const container = document.createElement('div');
   const SHOW_ERROR_TIME = 3000;

@@ -1,5 +1,5 @@
 import { renderMarkers, clearMarkers } from './map.js';
-import { debounce } from './utils/util.js';
+import { debounce } from './utils/debounce.js';
 
 const AMOUNT = 10;
 const DEFAULT_VALUE = 'any';
