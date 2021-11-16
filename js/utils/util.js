@@ -113,6 +113,5 @@ export {
   debounce, showErrorMsg,
   getRandomElement,
   randomNumber,
-  debounce,
-  getArray,
+  getArray
 };
