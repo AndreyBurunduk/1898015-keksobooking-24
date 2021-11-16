@@ -1,4 +1,4 @@
-import { showErrorMsg } from './msg.js';
+import { showErrorMsg } from './utils/util.js';
 
 const ACCEPTED_FILE_TYPES = [
   'image/jpeg',
