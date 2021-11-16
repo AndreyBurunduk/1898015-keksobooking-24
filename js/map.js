@@ -4,7 +4,7 @@ import { setFilterListener } from './filter.js';
 import { getData } from './api.js';
 import { showErrorMsg } from './utils/util.js';
 
-const MAPPOSITION = {
+const MAP_POSITION = {
   LAT: 35.682272.toFixed(5),
   LNG: 139.753137.toFixed(5),
   ZOOM: 13,
@@ -38,38 +38,38 @@ const mainPinIcon = L.icon({
 });
 
 const mainPinMarker = L.marker(
-  { lat: MAPPOSITION.LAT, lng: MAPPOSITION.LNG },
+  { lat: MAP_POSITION.LAT, lng: MAP_POSITION.LNG },
   { draggable: true, icon: mainPinIcon },
 );
 
 const map = L.map(mapCanvas).setView(
-  { lat: MAPPOSITION.LAT, lng: MAPPOSITION.LNG},
-  MAPPOSITION.ZOOM);
+  { lat: MAP_POSITION.LAT, lng: MAP_POSITION.LNG},
+  MAP_POSITION.ZOOM);
 
 L.tileLayer(TILE_LAYER,{attribution: ATTRIBUTION}).addTo(map);
 
 const markerGroup = L.layerGroup().addTo(map);
 
 const setAddressValue = () => {
-  address.value = `${MAPPOSITION.LAT}, ${MAPPOSITION.LNG}`;
+  address.value = `${MAP_POSITION.LAT}, ${MAP_POSITION.LNG}`;
 };
 
 const setDefault = () => {
   mainPinMarker.setLatLng({
-    lat: MAPPOSITION.LAT,
-    lng: MAPPOSITION.LNG,
+    lat: MAP_POSITION.LAT,
+    lng: MAP_POSITION.LNG,
   });
   map.setView({
-    lat: MAPPOSITION.LAT,
-    lng: MAPPOSITION.LNG,
-  }, MAPPOSITION.ZOOM);
+    lat: MAP_POSITION.LAT,
+    lng: MAP_POSITION.LNG,
+  }, MAP_POSITION.ZOOM);
   map.closePopup();
   setAddressValue();
 };
 
 const onAddressChange = (evt) => {
   const { lat, lng } = evt.target.getLatLng();
-  address.value = `${lat}, ${lng}`;
+  address.value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
 };
 
 const createMarker = (point) => {
